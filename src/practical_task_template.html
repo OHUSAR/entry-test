@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>4nets task</title>
+        <script src="babel.js"></script>
+        <style>
+            .cards {
+                margin: 20px 0 20px 0;
+            }
+
+            .card {
+                width: 50px;
+                height: 60px;
+                /* ... */
+            }
+
+            .score {
+                font-size: 20px;
+                margin: 5px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <input id="start" type="button" value="START">
+            <input id="stop" type="button" value="STOP">
+            <input id="sort" type="button" value="SORT">
+        </div>
+        <div class="cards" id="cards" ></div>
+        <div class="score" id="score"></div>
+
+        <script type="text/babel">
+            class Card {
+                constructor(from, to) {
+                    this.from = from;
+                    this.number = from
+                    this.to = to;
+                    this.color = 'yellow';
+                }
+
+                changeColor = (value) => {
+                    this.color = value;
+                }
+
+                change = () => {
+                    // Set this.number to random value from the interval <from, to>.
+                    this.number = 0;
+                }
+
+                getHTMLRepresentation = () => {
+                    // Return HTML representation of Card object (proprerly colored & containing card number).
+                    return `<div class="card"> ... </div>`;
+                }
+            }
+
+            class Game {
+                constructor() {
+                    this.cards = [];
+                    this.intervalID = null;
+                    this.rounds = 0;
+                    this.totalScore = 0;
+                    this.started = false;
+
+                    // Initialize the Game with 10 cards from (0, 10> interval.
+                    for (let i = 0; i < 0; i++) {
+                        // this.cards.push(new Card(..., ...));
+                    }
+                }
+
+                findOneAndChange = () => {
+                    let i = null; // choose one random card index
+                    this.cards[i].change();
+                    this.refresh();
+                }
+
+                refresh = () => {
+                    // Update HTML representation of current game state
+                    let scoreDiv = document.getElementById("score");
+                    scoreDiv.innerHTML = '';
+                    // ...
+                }
+
+                start = () => {
+                    // If there is no ongoing round, start a new one.
+                    // ...
+                }
+
+                stop = () => {
+                    // If there is an ongoing round, stop it and evaluate the results.
+                    // ...
+                    const values = []; // retrieve current card values
+                    const winners = []; // evaluate winning cards
+                    for (let i = 0; i < winners.length; i++) {
+                        this.cards[winners[i]].changeColor("lightgreen");
+                    }
+                    this.refresh();
+                }
+
+                yourSortAlgorithm = (list, compare) => {
+                    // O(...)
+
+                    // Sort list using compare function.
+                    // ...
+                    return list;
+                }
+
+                sort = () => {
+                    // Allow sorting only if there is no round in progress.
+                    // ...
+                    this.cards =  this.yourSortAlgorithm(
+                        this.cards,
+                        (x, y) => x.number > y.number,
+                    );
+                    this.refresh()
+                }
+
+
+            }
+
+            const c = new Game();
+            document.getElementById("start").addEventListener("click", c.start);
+            document.getElementById("stop").addEventListener("click", c.stop);
+            document.getElementById("sort").addEventListener("click", c.sort);
+        </script>
+    </body>
+</html>
