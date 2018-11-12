@@ -1,0 +1,15 @@
+    fragment ComplaintsTable on ComplaintNodeConnection {
+    edges{
+        node{
+            id
+            server {
+                name
+                id
+            }
+            targetType {
+                model
+                id
+            }
+        }
+    }
+}

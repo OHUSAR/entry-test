@@ -1,0 +1,7 @@
+#import "./complaints-table/complaints-table.graphql"
+
+query Complaints {
+    complaints {
+        ...ComplaintsTable
+    }
+}
